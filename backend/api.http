@@ -1,0 +1,22 @@
+### Content
+POST http://bounance.online:8000/entry?user=asas&tx=bbb HTTP/1.1
+Content-Type: application/json
+
+{
+}
+
+
+### Response
+GET http://bounance.online:8000/entries HTTP/1.1
+Content-Type: application/json
+
+{
+}
+
+### Response
+GET http://localhost:81/entries HTTP/1.1
+Content-Type: application/json
+
+{
+}
+

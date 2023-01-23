@@ -1,0 +1,37 @@
+// docker run: Herhangi bir image ismi verdiğinizde o image’ı kullanarak bir container oluşturur ve dilediğiniz komutları çalıştırır.
+// --name: Container adı vermek için kullanılır.
+// -e: Ortam değişkeni(environment variable) tanımlamak için kullanılır. Her image’ın kendine ait ortam değişkenleri olur. postgres’in diğer değişkenlerini görmek için bu bağlantıya gidebilirsiniz. Bizim kullandığımız POSTGRES_PASSWORD değişkeni superuser parolasıdır. Eğer POSTGRES_USER değişkenini kullanmazsanız varsayılan superuser olan postgres‘in parolasını belirlemiş olursunuz.
+// -d: Container‘ı arkaplanda oluşturur ve container ID’sini ekrana yazdırır. (--detach)
+// -p: Container portlarını açar. Burada postgres’in varsayılan portu olan 5432’yi 5432 portunda açtık. Böylece host olan sistemden erişebileceğiz.
+// -v: Container‘lar silindiğinde içindeki veriler de silinir. Volume kullanarak container içindeki bir dizini host olan bilgisayardaki bir dizin ile eşleştiriyoruz. Böylece container silindiğinde verileri kaybetmiyoruz. İlk kısım host’taki dizin, ikincisi ise container içinde eşleştirdiğimiz dizin.
+// postgres: bu da kullanılacak olan image adı.
+
+docker run --name docker_postgres -e POSTGRES_PASSWORD=123456 -d -p 5432:5432 -v /Users/kadir42/Desktop/projects/docker_python/volumes:/var/lib/postgresql/data postgres
+
+
+docker exec -it docker_postgres psql -U postgres
+
+
+CREATE TABLE HISTORY(
+   ID INT PRIMARY KEY     NOT NULL,
+   USER           TEXT    NOT NULL,
+   TX             TEXT    NOT NULL,
+   TIME           TEXT    NOT NULL
+);
+
+export DB_USERNAME="postgres"
+export DB_PASSWORD="123456"
+
+
+
+
+
+---
+
+
+CREATE TABLE books (id serial PRIMARY KEY,title varchar (150) NOT NULL,'
+                                 'author varchar (50) NOT NULL,'
+                                 'pages_num integer NOT NULL,'
+                                 'review text,'
+                                 'date_added date DEFAULT CURRENT_TIMESTAMP);
+CREATE TABLE data (id serial PRIMARY KEY, USER VARCHAR(255) UNIQUE NOT NULL,TX VARCHAR ( 255 ) NOT NULL,TIME VARCHAR ( 255 ) UNIQUE NOT NULL);
