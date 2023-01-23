@@ -28,3 +28,10 @@ cp -rf src/artifacts .
 ```
 
 Then you can go the option a.
+
+
+
+Collaborators:
+- Demet Yayla (me)
+- Zeynep Sude Aydoğan
+- Kadir Gökhan Sezer
